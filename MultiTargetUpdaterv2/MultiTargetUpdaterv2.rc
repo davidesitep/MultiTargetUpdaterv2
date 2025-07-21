@@ -1,0 +1,19 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h" // Assicurati che resource.h esista e definisca IDI_ICON1
+
+/////////////////////////////////////////////////////////////////////////////
+// Italiano (Italia) resources
+
+// Correzione: Uso degli ID di lingua primario e secondario separati
+LANGUAGE 0x04, 0x01 // LANG_ITALIAN (0x04), SUBLANG_ITALIAN (0x01)
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "MultiTargetUpdaterv2.ico" // Assicurati che questo file sia nella stessa directory del .rc

@@ -1,0 +1,45 @@
+\doxysection{Log\+List\+Widget Class Reference}
+\hypertarget{class_log_list_widget}{}\label{class_log_list_widget}\index{LogListWidget@{LogListWidget}}
+
+
+\doxylink{class_log_list_widget}{Log\+List\+Widget} è una sottoclasse derivata da QList\+Widget che permette di aggiungere un segnale ogni volta che viene aggiunto un elemento al widget. Questo permette di segnalare ad un logger esterno gli eventi di log generati. Il metodo add\+Item è stato sovrascritto per emettere un segnale item\+Added con il testo dell\textquotesingle{}elemento aggiunto.  
+
+
+
+
+{\ttfamily \#include $<$Log\+List\+Widget.\+h$>$}
+
+Inheritance diagram for Log\+List\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_log_list_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_log_list_widget_aa548c24e3e0bcc9fcc3fda9ac350f7c4}\label{class_log_list_widget_aa548c24e3e0bcc9fcc3fda9ac350f7c4} 
+void {\bfseries item\+Added} (const QString \&text)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_log_list_widget_a7641f016a1a37425fb10ee8c75cbf640}\label{class_log_list_widget_a7641f016a1a37425fb10ee8c75cbf640} 
+void {\bfseries add\+Item} (QList\+Widget\+Item \texorpdfstring{$\ast$}{*}item, const QString \&text)
+\item 
+\Hypertarget{class_log_list_widget_a32d9f30a384d607a06d6ec7390f18846}\label{class_log_list_widget_a32d9f30a384d607a06d6ec7390f18846} 
+void {\bfseries add\+Item} (const QString \&text)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_log_list_widget}{Log\+List\+Widget} è una sottoclasse derivata da QList\+Widget che permette di aggiungere un segnale ogni volta che viene aggiunto un elemento al widget. Questo permette di segnalare ad un logger esterno gli eventi di log generati. Il metodo add\+Item è stato sovrascritto per emettere un segnale item\+Added con il testo dell\textquotesingle{}elemento aggiunto. 
+
+\begin{DoxySeeAlso}{See also}
+Qusta classe è utilizzata da \doxylink{class_multi_target_updaterv2}{Multi\+Target\+Updaterv2} per segnalare gli aventi di log alla classe \doxylink{classlogger}{logger}. 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/davided/source/repos/\+Multi\+Target\+Updaterv2/\+Multi\+Target\+Updaterv2/Log\+List\+Widget.\+h\end{DoxyCompactItemize}
