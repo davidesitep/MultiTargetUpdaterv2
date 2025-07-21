@@ -1,0 +1,563 @@
+\doxysection{Multi\+Target\+Updaterv2 Class Reference}
+\hypertarget{class_multi_target_updaterv2}{}\label{class_multi_target_updaterv2}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+
+
+\doxylink{class_multi_target_updaterv2}{Multi\+Target\+Updaterv2} è una classe che gestisce l\textquotesingle{}aggiornamento di più dispositivi tramite un \textquotesingle{}interfaccia grafica. La classe permette di connettersi ai dispositivi, scaricare le configurazioni, verificare le versioni del firmware installato e disponibile, e gestire l\textquotesingle{}aggiornamento del firmware. Utilizza Win\+SCP per la gestione dei file remoti e Open\+SSL per la crittografia e decrittografia dei dati. La classe include anche funzionalità per l\textquotesingle{}interazione con l\textquotesingle{}utente tramite un interfaccia gradica.  
+
+
+
+
+{\ttfamily \#include $<$multitargetupdaterv2.\+h$>$}
+
+Inheritance diagram for Multi\+Target\+Updaterv2\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_multi_target_updaterv2}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_multi_target_updaterv2_1_1device_fw_info}{device\+Fw\+Info}}
+\item 
+struct \mbox{\hyperlink{struct_multi_target_updaterv2_1_1_net_conf}{Net\+Conf}}
+\item 
+struct \mbox{\hyperlink{struct_multi_target_updaterv2_1_1remote_project}{remote\+Project}}
+\item 
+struct \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a1241add5cfdcfdffdb5633a33ff4abac}\label{class_multi_target_updaterv2_a1241add5cfdcfdffdb5633a33ff4abac} 
+void {\bfseries enable\+Action\+Button} (QString device\+Name)
+\item 
+\Hypertarget{class_multi_target_updaterv2_ac2bb0746477f982593153d282e1f4ba7}\label{class_multi_target_updaterv2_ac2bb0746477f982593153d282e1f4ba7} 
+void {\bfseries exportlog\+\_\+signal} (const QString destination\+Dri\+Path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a1f11a3a37e62a25442389f37dce2041d}\label{class_multi_target_updaterv2_a1f11a3a37e62a25442389f37dce2041d} 
+{\bfseries Multi\+Target\+Updaterv2} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a70319870ff4aa726ffd7fcfa26a9bf26}\label{class_multi_target_updaterv2_a70319870ff4aa726ffd7fcfa26a9bf26} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+enter\+Bl\+Mode} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a2ec1b16989faf603a94be5ca1176900f}\label{class_multi_target_updaterv2_a2ec1b16989faf603a94be5ca1176900f} 
+void {\bfseries on\+Win\+SCPError\+Occurred} (QProcess\+::\+Process\+Error error)
+\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a59da0f41c0d483bbcabd52e33c1e5a6b}{retry\+Win\+SCPProcess}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il retry di connessione allo scadere del timer. Questa funzione viene chiamata quando il QTimer \textquotesingle{}retry\+Timer\textquotesingle{} scade, indicando che è il momento di tentare nuovamente il processo Win\+SCP. Incrementa il contatore dei tentativi e richiama la funzione in base al timer che scatta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a7fd523b5c6ae02b13cba0785e044227e}{on\+\_\+push\+Buttonclicked\+\_\+check\+Installed\+Fw}} ()
+\begin{DoxyCompactList}\small\item\em Gestisce il click del pulsante per controllare i firmware installati sui dispositivi. \end{DoxyCompactList}\item 
+\Hypertarget{class_multi_target_updaterv2_a634d84c727926757273921abbc2f7673}\label{class_multi_target_updaterv2_a634d84c727926757273921abbc2f7673} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+download\+System\+List} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_ab931b67b2fda15143e8746dadffd4a15}\label{class_multi_target_updaterv2_ab931b67b2fda15143e8746dadffd4a15} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+download\+Fwfor\+Current\+System} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a2ad092e4417c8ed102cf2a9aa2d00b5b}\label{class_multi_target_updaterv2_a2ad092e4417c8ed102cf2a9aa2d00b5b} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+load\+From\+Local\+Folder} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a1aeea50a2a3aced8cc0524ff9253bb99}\label{class_multi_target_updaterv2_a1aeea50a2a3aced8cc0524ff9253bb99} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+start\+Application} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a03a4a4615adfd362b87aaff388fbabe7}\label{class_multi_target_updaterv2_a03a4a4615adfd362b87aaff388fbabe7} 
+void {\bfseries on\+\_\+push\+Button\+Clicked\+\_\+export\+Log} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a0ecdf29cf6ad975b9accefbaa134c697}\label{class_multi_target_updaterv2_a0ecdf29cf6ad975b9accefbaa134c697} 
+void {\bfseries print\+Log\+Message} (const QString \&message)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a0c79ba8eefff9920f559b2cc92736509}\label{class_multi_target_updaterv2_a0c79ba8eefff9920f559b2cc92736509} 
+void {\bfseries enter\+Bootloader} ()
+\item 
+bool \mbox{\hyperlink{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e}{write\+Script\+File}} (const QString \&script, const QString \&path)
+\begin{DoxyCompactList}\small\item\em Scrive uno script Win\+SCP in file specificato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a1cb5e684e89484c84b813840b4c3e863}{down\+Load\+Net\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Questa funzione gestisce il download del file di configurazione di rete del dispositivo attraverso un processo Win\+SCP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a93bc4c2eb486041b7487c7fb4c10c665}{read\+Net\+Config}} (const QString \&net\+Conf\+Path)
+\begin{DoxyCompactList}\small\item\em Legge il file di configurazione di rete \textquotesingle{}netconf.\+bin\textquotesingle{} e valida i dati letti. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a4b6d76186adc3d4acd2932025836e177}{check\+Installedfw}} ()
+\begin{DoxyCompactList}\small\item\em Controlla i firmware installati sul dispositivo e li scarica nella cartella temporanea /data/temp/installed\+Fw/. \end{DoxyCompactList}\item 
+\Hypertarget{class_multi_target_updaterv2_a112d5886b2d5c4e262a073eb45709267}\label{class_multi_target_updaterv2_a112d5886b2d5c4e262a073eb45709267} 
+void {\bfseries read\+Fw\+Versions} (const QString \&data\+Path)
+\item 
+int \mbox{\hyperlink{class_multi_target_updaterv2_aac3589ced94fa74413e8d39ce0c6bbd2}{read\+Fw\+Version}} (QString file\+Path, \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} \&info)
+\begin{DoxyCompactList}\small\item\em Legge le informazioni sulla versione del firmware da un file specificato e le memorizza in una struttura \doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_af7532a10e3f27b1300897fa2ccac4800}{update\+Fw\+Table\+Widget}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna la tabella dei firmware installati e disponibili. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a0a0d353992faa0d81da0f4f40621a86e}{compare\+Sw\+Infos}} (QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$ \&existing\+Infos, QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$ new\+Infos)
+\begin{DoxyCompactList}\small\item\em Confronta le informazioni dei software presenti sul dispositivo con le informazioni dei software scaricati e aggiorna la lista device\+Fw\+Infos contenente le informazioni appaiate di software installati e da installare. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a5d91c95a94d9302b4c3f35f183e451c2}{download\+Fw\+List}} ()
+\begin{DoxyCompactList}\small\item\em Scarica la lista dei firmware disponibili da un server remoto utilizzando Win\+SCP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a86ee61efabd5ee12bc7f96358544ac74}{read\+Conf\+List}} (QString conf\+List\+Path)
+\begin{DoxyCompactList}\small\item\em Legge la lista di configurazione da Conf\+List.\+xml. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_a5197c4367b18a877db8b0fd838d0c37a}{update\+Available\+System\+List}} ()
+\begin{DoxyCompactList}\small\item\em Aggiorna la lista dei progetti disponibili nella combo box. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{class_multi_target_updaterv2_aadd7c8ed2d48a0a7e32827e7a40fcc57}{Decrypt\+String}} (const QString \&src)
+\begin{DoxyCompactList}\small\item\em Decripta una stringa cifrata in Base64 utilizzando AES-\/256-\/\+CBC\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_multi_target_updaterv2_aec1dcfb340aaf5f3bc77698fd4cd49b2}{handle\+Open\+SSLError}} (const QString \&context)
+\begin{DoxyCompactList}\small\item\em Gestisce gli errori di Open\+SSL. \end{DoxyCompactList}\item 
+\Hypertarget{class_multi_target_updaterv2_aa7fb72e92832e7c3ee039052284dd0f6}\label{class_multi_target_updaterv2_aa7fb72e92832e7c3ee039052284dd0f6} 
+void {\bfseries download\+Remote\+Fw} ()
+\item 
+\Hypertarget{class_multi_target_updaterv2_a45455a769a49130ab8092b3b626e7c49}\label{class_multi_target_updaterv2_a45455a769a49130ab8092b3b626e7c49} 
+QString {\bfseries hash\+\_\+generator} (QString algorithm, QString filepath)
+\item 
+\Hypertarget{class_multi_target_updaterv2_a624606bb88c52b9be363cf111521ce35}\label{class_multi_target_updaterv2_a624606bb88c52b9be363cf111521ce35} 
+void {\bfseries unzip\+Folder} (QString local\+Temp\+Folder)
+\item 
+\Hypertarget{class_multi_target_updaterv2_a153fd5df599cb74ab4481e5e9fa29378}\label{class_multi_target_updaterv2_a153fd5df599cb74ab4481e5e9fa29378} 
+void {\bfseries read\+Local\+Fw\+Version} (const QString \&files\+Path)
+\item 
+\Hypertarget{class_multi_target_updaterv2_a5e2e3ec1a80aa11f11f5b17a71e27c71}\label{class_multi_target_updaterv2_a5e2e3ec1a80aa11f11f5b17a71e27c71} 
+void {\bfseries update\+Firmware} (QString device\+Name, QString path)
+\item 
+\Hypertarget{class_multi_target_updaterv2_a01ab6fcc848b3fe9739014f3508453ed}\label{class_multi_target_updaterv2_a01ab6fcc848b3fe9739014f3508453ed} 
+void {\bfseries check\+Update} (QString update\+File\+Name, QString bin\+Folder)
+\item 
+\Hypertarget{class_multi_target_updaterv2_ada5f9f27ef537367ba94fa64ec6ab7ef}\label{class_multi_target_updaterv2_ada5f9f27ef537367ba94fa64ec6ab7ef} 
+void {\bfseries clean\+Logs\+View} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a466663289a1e2d155a428045c3029f42}\label{class_multi_target_updaterv2_a466663289a1e2d155a428045c3029f42} 
+Ui\+::\+Multi\+Target\+Updaterv2\+Class {\bfseries ui}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a38e3e18b28e30b4dcca6c9a01691a87c}\label{class_multi_target_updaterv2_a38e3e18b28e30b4dcca6c9a01691a87c} 
+\mbox{\hyperlink{classlogger}{logger}} \texorpdfstring{$\ast$}{*} {\bfseries log}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a6950e037ef538946751867eff29bdb08}\label{class_multi_target_updaterv2_a6950e037ef538946751867eff29bdb08} 
+bool {\bfseries is\+Connected} = false
+\item 
+\Hypertarget{class_multi_target_updaterv2_a6b3232164f0cbbd7c45f6f1f2787d5dc}\label{class_multi_target_updaterv2_a6b3232164f0cbbd7c45f6f1f2787d5dc} 
+bool {\bfseries entering\+Bl} = false
+\item 
+\Hypertarget{class_multi_target_updaterv2_a17d42d1c39b067a4ef74a6886d01ea91}\label{class_multi_target_updaterv2_a17d42d1c39b067a4ef74a6886d01ea91} 
+bool {\bfseries ready} = false
+\item 
+\Hypertarget{class_multi_target_updaterv2_a259132de5c23d6b72aaf611bf81561a2}\label{class_multi_target_updaterv2_a259132de5c23d6b72aaf611bf81561a2} 
+bool {\bfseries update\+Process} = false
+\item 
+\Hypertarget{class_multi_target_updaterv2_a8a7b76ade7d8573a660fe176d63c60f2}\label{class_multi_target_updaterv2_a8a7b76ade7d8573a660fe176d63c60f2} 
+QString {\bfseries main\+Log\+Dir\+Path} = QDir\+::to\+Native\+Separators(QCore\+Application\+::application\+Dir\+Path() + "{}/log/"{})
+\item 
+\Hypertarget{class_multi_target_updaterv2_ab3c14168b11210e0655134c45fdc2c95}\label{class_multi_target_updaterv2_ab3c14168b11210e0655134c45fdc2c95} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries enter\+Bl\+Timer}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a8942690ae07e0c1dbc13b749931a70f4}\label{class_multi_target_updaterv2_a8942690ae07e0c1dbc13b749931a70f4} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries netconf\+Transf\+Timer}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a9633795bde98fe484e78831adc47efd2}\label{class_multi_target_updaterv2_a9633795bde98fe484e78831adc47efd2} 
+QTimer \texorpdfstring{$\ast$}{*} {\bfseries download\+Installed\+Fw\+Timer}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a9b005422140381cad6e2a6688e53c12d}\label{class_multi_target_updaterv2_a9b005422140381cad6e2a6688e53c12d} 
+int {\bfseries retry\+Count}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a3d5bb41695b5d4d2fdbc8a1d90824535}\label{class_multi_target_updaterv2_a3d5bb41695b5d4d2fdbc8a1d90824535} 
+const int {\bfseries MAX\+\_\+\+RETRIES} = 9
+\item 
+\Hypertarget{class_multi_target_updaterv2_ab420ad135a7adf1746c9707fc6fdd5ea}\label{class_multi_target_updaterv2_ab420ad135a7adf1746c9707fc6fdd5ea} 
+const int {\bfseries RETRY\+\_\+\+INTERVAL\+\_\+\+MS} = 1200
+\item 
+\Hypertarget{class_multi_target_updaterv2_a42a29719a11ed8643f83b2ddd9e5f019}\label{class_multi_target_updaterv2_a42a29719a11ed8643f83b2ddd9e5f019} 
+const QString {\bfseries host\+Name} = "{}192.\+168.\+1.\+80"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a5482c4d1399912f139bdca136db29ea4}\label{class_multi_target_updaterv2_a5482c4d1399912f139bdca136db29ea4} 
+const QString {\bfseries user\+Name} = "{}Sitep\+Administrator"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_adcf9f8e9238c25fabd0d5d21be7ff7fd}\label{class_multi_target_updaterv2_adcf9f8e9238c25fabd0d5d21be7ff7fd} 
+const QString {\bfseries password} = "{}Secure\+Update2015"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a99b304e5d4cea0df048b3e8496a3e1ad}\label{class_multi_target_updaterv2_a99b304e5d4cea0df048b3e8496a3e1ad} 
+const QString {\bfseries port} = "{}7356"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a943b19f8e34f1b6d15387de6ed27235a}\label{class_multi_target_updaterv2_a943b19f8e34f1b6d15387de6ed27235a} 
+const QString {\bfseries update\+Host\+Name} = "{}192.\+168.\+1.\+19"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_afb52ea65e7d3bfeb9c0284639ca5395d}\label{class_multi_target_updaterv2_afb52ea65e7d3bfeb9c0284639ca5395d} 
+const QString {\bfseries update\+User\+Name} = "{}Sitep\+Update\+Pack"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_aeb0d5afa8a0a45e598c3b6239afe2e11}\label{class_multi_target_updaterv2_aeb0d5afa8a0a45e598c3b6239afe2e11} 
+const QString {\bfseries update\+Password} = "{}Secure\+Update2016"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a6a8188865214767ac42de89f8b93cce8}\label{class_multi_target_updaterv2_a6a8188865214767ac42de89f8b93cce8} 
+const QString {\bfseries update\+Port} = "{}21"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a5dcfce429ba144c53c2d6f1757569d4b}\label{class_multi_target_updaterv2_a5dcfce429ba144c53c2d6f1757569d4b} 
+const QString {\bfseries pack\+Type} = "{}\texorpdfstring{$\ast$}{*}"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_abd961caa72b25dfefaaacc24bb02cb91}\label{class_multi_target_updaterv2_abd961caa72b25dfefaaacc24bb02cb91} 
+const unsigned char {\bfseries raw\+Key\+Bytes} \mbox{[}32\mbox{]} = \{ 1, 253, 5, 60, 52, 91, 193, 133, 193, 121, 221, 164, 57, 128, 91, 91, 19, 39, 111, 197, 125, 98, 89, 48, 97, 154, 83, 187, 222, 167, 171, 74 \}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ace0821f734ef096db2ca3b08737fd2ab}\label{class_multi_target_updaterv2_ace0821f734ef096db2ca3b08737fd2ab} 
+const unsigned char {\bfseries raw\+Iv\+Bytes} \mbox{[}16\mbox{]} = \{ 10, 51, 235, 120, 122, 120, 80, 248, 13, 182, 196, 212, 176, 46, 23, 85 \}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a83e521be6b5ac9dff10a70497a95f642}\label{class_multi_target_updaterv2_a83e521be6b5ac9dff10a70497a95f642} 
+const QString {\bfseries remote\+Netconf\+Path} = "{}/netconf.\+bin"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a6c45f5b1964f9555538114a4547e670d}\label{class_multi_target_updaterv2_a6c45f5b1964f9555538114a4547e670d} 
+const QString {\bfseries local\+Netconf\+Path} = "{}netconf.\+bin"{}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ae652ee7b8895e0cfe8409d702f8c49c4}\label{class_multi_target_updaterv2_ae652ee7b8895e0cfe8409d702f8c49c4} 
+QString {\bfseries list\+Files\+Log\+Path}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ace6f7b7bb05e075376db18790f2d1bd6}\label{class_multi_target_updaterv2_ace6f7b7bb05e075376db18790f2d1bd6} 
+bool {\bfseries list\+Widget\+Alive}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ad7e5f2e681da75e28e355bedb5542951}\label{class_multi_target_updaterv2_ad7e5f2e681da75e28e355bedb5542951} 
+\mbox{\hyperlink{struct_multi_target_updaterv2_1_1_net_conf}{Net\+Conf}} {\bfseries Configurazione}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ac678da5e87b772148505721b627df7fc}\label{class_multi_target_updaterv2_ac678da5e87b772148505721b627df7fc} 
+QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$ {\bfseries installed\+Fw\+Infos}
+\item 
+\Hypertarget{class_multi_target_updaterv2_ab9e182a43947dd612cb404af5577657d}\label{class_multi_target_updaterv2_ab9e182a43947dd612cb404af5577657d} 
+QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$ {\bfseries downloaded\+Fw\+Infos}
+\item 
+\Hypertarget{class_multi_target_updaterv2_abe1d90652232e88ee6e5fe46c4c7a5ad}\label{class_multi_target_updaterv2_abe1d90652232e88ee6e5fe46c4c7a5ad} 
+QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1remote_project}{remote\+Project}} $>$ {\bfseries remote\+Projects}
+\item 
+\Hypertarget{class_multi_target_updaterv2_a5f04606451deffd8f156756372537926}\label{class_multi_target_updaterv2_a5f04606451deffd8f156756372537926} 
+QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1device_fw_info}{device\+Fw\+Info}} $>$ {\bfseries device\+Fw\+Infos}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_multi_target_updaterv2}{Multi\+Target\+Updaterv2} è una classe che gestisce l\textquotesingle{}aggiornamento di più dispositivi tramite un \textquotesingle{}interfaccia grafica. La classe permette di connettersi ai dispositivi, scaricare le configurazioni, verificare le versioni del firmware installato e disponibile, e gestire l\textquotesingle{}aggiornamento del firmware. Utilizza Win\+SCP per la gestione dei file remoti e Open\+SSL per la crittografia e decrittografia dei dati. La classe include anche funzionalità per l\textquotesingle{}interazione con l\textquotesingle{}utente tramite un interfaccia gradica. 
+
+\begin{DoxyNote}{Note}
+Questa classe è progettata in ambiente Qt e utilizza le librerie Open\+SSl per la criptografia e il client Win\+SCP per l\textquotesingle{}interazione con i dispositivi remoti e con il server FTP contenente i firmware. 
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Topolino 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/07-\/07 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\label{doc-func-members}
+\Hypertarget{class_multi_target_updaterv2_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_multi_target_updaterv2_a4b6d76186adc3d4acd2932025836e177}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!checkInstalledfw@{checkInstalledfw}}
+\index{checkInstalledfw@{checkInstalledfw}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{checkInstalledfw()}{checkInstalledfw()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a4b6d76186adc3d4acd2932025836e177} 
+void Multi\+Target\+Updaterv2\+::check\+Installedfw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Controlla i firmware installati sul dispositivo e li scarica nella cartella temporanea /data/temp/installed\+Fw/. 
+
+@function check\+Installedfw 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione crea uno script per Win\+SCP che si connette al dispositivo e scaricare le informazioni sui firmware installati sul dispositivo e sui dispositivi CAN e COM collegati. Usa un funzione definata inline per gestire il processo di download e la lettura dei file scaricati. \begin{DoxySeeAlso}{See also}
+\doxylink{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e}{write\+Script\+File()}, read\+Fw\+Versions(), \doxylink{class_multi_target_updaterv2_a0a0d353992faa0d81da0f4f40621a86e}{compare\+Sw\+Infos()}, \doxylink{class_multi_target_updaterv2_af7532a10e3f27b1300897fa2ccac4800}{update\+Fw\+Table\+Widget()}, on\+Win\+SCPError\+Occurred(), \doxylink{class_multi_target_updaterv2_a59da0f41c0d483bbcabd52e33c1e5a6b}{retry\+Win\+SCPProcess()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a0a0d353992faa0d81da0f4f40621a86e}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!compareSwInfos@{compareSwInfos}}
+\index{compareSwInfos@{compareSwInfos}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{compareSwInfos()}{compareSwInfos()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a0a0d353992faa0d81da0f4f40621a86e} 
+void Multi\+Target\+Updaterv2\+::compare\+Sw\+Infos (\begin{DoxyParamCaption}\item[{QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$ \&}]{existing\+Infos}{, }\item[{QList$<$ \mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} $>$}]{new\+Infos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Confronta le informazioni dei software presenti sul dispositivo con le informazioni dei software scaricati e aggiorna la lista device\+Fw\+Infos contenente le informazioni appaiate di software installati e da installare. 
+
+@function compare\+Sw\+Infos 
+\begin{DoxyParams}{Parameters}
+{\em existing\+Infos} & Lista delle informazioni software esistenti. \\
+\hline
+{\em new\+Infos} & Lista delle nuove informazioni software da confrontare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione confronta le informazioni software esistenti con le nuove informazioni e aggiorna la lista device\+Fw\+Infos con le versioni installate e disponibili. Se un dispositivo non ha una versione installata, viene indicato come "{}\+Non installato"{}. \begin{DoxySeeAlso}{See also}
+\doxylink{struct_multi_target_updaterv2_1_1device_fw_info}{device\+Fw\+Info}, \doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}, device\+Fw\+Infos 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_aadd7c8ed2d48a0a7e32827e7a40fcc57}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!DecryptString@{DecryptString}}
+\index{DecryptString@{DecryptString}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{DecryptString()}{DecryptString()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_aadd7c8ed2d48a0a7e32827e7a40fcc57} 
+QString Multi\+Target\+Updaterv2\+::\+Decrypt\+String (\begin{DoxyParamCaption}\item[{const QString \&}]{src}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Decripta una stringa cifrata in Base64 utilizzando AES-\/256-\/\+CBC\+: 
+
+@function Decrypt\+String 
+\begin{DoxyParams}{Parameters}
+{\em src} & La stringa cifrata da decodificare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+QString() la stringa decifrata fino a quel punto di esecuzioine dell\textquotesingle{}algoritmo e solo in caso di errore. 
+
+result\+String stringa decifrata senza padding e spazi bianchi.
+\end{DoxyReturn}
+Questa funzione utilizza Open\+SSL per cifrare una stringa cifrata in Base64. \begin{DoxySeeAlso}{See also}
+EVP\+\_\+\+CIPHER\+\_\+\+CTX\+\_\+new(), EVP\+\_\+\+Decrypt\+Init\+\_\+ex(), EVP\+\_\+\+Decrypt\+Update(), EVP\+\_\+\+Decrypt\+Final\+\_\+ex(), QByte\+Array\+::from\+Base64() 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a5d91c95a94d9302b4c3f35f183e451c2}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!downloadFwList@{downloadFwList}}
+\index{downloadFwList@{downloadFwList}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{downloadFwList()}{downloadFwList()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a5d91c95a94d9302b4c3f35f183e451c2} 
+void Multi\+Target\+Updaterv2\+::download\+Fw\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scarica la lista dei firmware disponibili da un server remoto utilizzando Win\+SCP. 
+
+@function download\+Fw\+List 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione crea uno script per Win\+SCP che si connette al server FTP e scarica il file Config\+List.\+xml contenente le informazioni sui firmware disponibili. Dopo il download, chiama la funzione read\+Conf\+List per leggere il file XML e popolare la lista dei progetti remoti. \begin{DoxySeeAlso}{See also}
+\doxylink{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e}{write\+Script\+File()}, \doxylink{class_multi_target_updaterv2_a86ee61efabd5ee12bc7f96358544ac74}{read\+Conf\+List()}, on\+Win\+SCPError\+Occurred() 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a1cb5e684e89484c84b813840b4c3e863}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!downLoadNetConfig@{downLoadNetConfig}}
+\index{downLoadNetConfig@{downLoadNetConfig}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{downLoadNetConfig()}{downLoadNetConfig()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a1cb5e684e89484c84b813840b4c3e863} 
+void Multi\+Target\+Updaterv2\+::down\+Load\+Net\+Config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Questa funzione gestisce il download del file di configurazione di rete del dispositivo attraverso un processo Win\+SCP. 
+
+@function down\+Load\+Net\+Config 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione crea uno script per Win\+SCP che si connette al dispositivo e scarica il file di configurazione di rete \textquotesingle{}netconf.\+bin\textquotesingle{}. \begin{DoxySeeAlso}{See also}
+\doxylink{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e}{write\+Script\+File()}, \doxylink{class_multi_target_updaterv2_a93bc4c2eb486041b7487c7fb4c10c665}{read\+Net\+Config()}, on\+Win\+SCPError\+Occurred(), \doxylink{class_multi_target_updaterv2_a59da0f41c0d483bbcabd52e33c1e5a6b}{retry\+Win\+SCPProcess()} 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_aec1dcfb340aaf5f3bc77698fd4cd49b2}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!handleOpenSSLError@{handleOpenSSLError}}
+\index{handleOpenSSLError@{handleOpenSSLError}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{handleOpenSSLError()}{handleOpenSSLError()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_aec1dcfb340aaf5f3bc77698fd4cd49b2} 
+void Multi\+Target\+Updaterv2\+::handle\+Open\+SSLError (\begin{DoxyParamCaption}\item[{const QString \&}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gestisce gli errori di Open\+SSL. 
+
+@function handle\+Open\+SSLError 
+\begin{DoxyParams}{Parameters}
+{\em context} & Il contesto in cui si verifica l\textquotesingle{}errore. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione intercetta gli errori di Open\+SSl e li stampa nell\textquotesingle{}output di debug. \begin{DoxySeeAlso}{See also}
+ERR\+\_\+get\+\_\+error(), ERR\+\_\+error\+\_\+string() 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a7fd523b5c6ae02b13cba0785e044227e}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!on\_pushButtonclicked\_checkInstalledFw@{on\_pushButtonclicked\_checkInstalledFw}}
+\index{on\_pushButtonclicked\_checkInstalledFw@{on\_pushButtonclicked\_checkInstalledFw}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{on\_pushButtonclicked\_checkInstalledFw}{on\_pushButtonclicked\_checkInstalledFw}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a7fd523b5c6ae02b13cba0785e044227e} 
+void Multi\+Target\+Updaterv2\+::on\+\_\+push\+Buttonclicked\+\_\+check\+Installed\+Fw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Gestisce il click del pulsante per controllare i firmware installati sui dispositivi. 
+
+@slot on\+\_\+push\+Buttonclicked\+\_\+check\+Installed\+Fw 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione pulisce la vista dei log, verifica se il dispositivo è connesso e chiama la funzione per controllare i firmware installati. Se il dispositivo non è in modalità bootloader, informa l\textquotesingle{}utente di farlo prima. \begin{DoxySeeAlso}{See also}
+\doxylink{class_multi_target_updaterv2_a4b6d76186adc3d4acd2932025836e177}{check\+Installedfw()}, clean\+Logs\+View() 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a86ee61efabd5ee12bc7f96358544ac74}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!readConfList@{readConfList}}
+\index{readConfList@{readConfList}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{readConfList()}{readConfList()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a86ee61efabd5ee12bc7f96358544ac74} 
+void Multi\+Target\+Updaterv2\+::read\+Conf\+List (\begin{DoxyParamCaption}\item[{QString}]{conf\+List\+Dir\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Legge la lista di configurazione da Conf\+List.\+xml. 
+
+@function read\+Conf\+List 
+\begin{DoxyParams}{Parameters}
+{\em conf\+List\+Dir\+Path} & Il percorso della directory contenente il file Conf\+List.\+xml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione apre il file Conf\+List.\+xml, decripta e legge le informazioni sui progetti remoti, e le memorizza in una Qlist di \doxylink{struct_multi_target_updaterv2_1_1remote_project}{remote\+Project}. \begin{DoxySeeAlso}{See also}
+\doxylink{struct_multi_target_updaterv2_1_1remote_project}{remote\+Project}, QXml\+Stram\+Reader, \doxylink{class_multi_target_updaterv2_aadd7c8ed2d48a0a7e32827e7a40fcc57}{Decrypt\+String()}, update\+Available\+Sysstem\+List() 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_aac3589ced94fa74413e8d39ce0c6bbd2}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!readFwVersion@{readFwVersion}}
+\index{readFwVersion@{readFwVersion}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{readFwVersion()}{readFwVersion()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_aac3589ced94fa74413e8d39ce0c6bbd2} 
+int Multi\+Target\+Updaterv2\+::read\+Fw\+Version (\begin{DoxyParamCaption}\item[{QString}]{file\+Path}{, }\item[{\mbox{\hyperlink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}} \&}]{info}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Legge le informazioni sulla versione del firmware da un file specificato e le memorizza in una struttura \doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}. 
+
+@function read\+Fw\+Version 
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Il percorso del file da cui leggere le informazioni sulla versione del firmware. \\
+\hline
+{\em info} & Riferimento alla struttura \doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info} in cui memerizzare le informazioni lette. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Restituisce 0 se la lettura è avvenuta con successo, 1 se il file non esiste, 2 se si è verificato un errore nell\textquotesingle{}apertura del file.
+\end{DoxyReturn}
+Questa funzione apre un file binario, legge le informazioni sulla versione, i dati e l\textquotesingle{}ora, e le memorizza nella struttura \doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info} passata come parametro. \begin{DoxySeeAlso}{See also}
+\doxylink{struct_multi_target_updaterv2_1_1sw_info}{sw\+Info}, QFile, QData\+Stream, VERSION\+\_\+\+SIZE, DATA\+\_\+\+SIZE, ORA\+\_\+\+SIZE 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a93bc4c2eb486041b7487c7fb4c10c665}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!readNetConfig@{readNetConfig}}
+\index{readNetConfig@{readNetConfig}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{readNetConfig()}{readNetConfig()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a93bc4c2eb486041b7487c7fb4c10c665} 
+void Multi\+Target\+Updaterv2\+::read\+Net\+Config (\begin{DoxyParamCaption}\item[{const QString \&}]{net\+Conf\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Legge il file di configurazione di rete \textquotesingle{}netconf.\+bin\textquotesingle{} e valida i dati letti. 
+
+@function read\+Net\+Config 
+\begin{DoxyParams}{Parameters}
+{\em net\+Conf\+Path} & Il percorso del file di configurazione di rete da leggere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione apre il file di configurazione di rete, legge i dati in una struttura \doxylink{struct_multi_target_updaterv2_1_1_net_conf}{Net\+Conf} e verifica la validità dei dati letti confrontando il CRC e altri campi. \begin{DoxySeeAlso}{See also}
+\doxylink{struct_multi_target_updaterv2_1_1_net_conf}{Net\+Conf}, QFile, QData\+Stream, \doxylink{classlogger}{logger} 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a59da0f41c0d483bbcabd52e33c1e5a6b}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!retryWinSCPProcess@{retryWinSCPProcess}}
+\index{retryWinSCPProcess@{retryWinSCPProcess}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{retryWinSCPProcess}{retryWinSCPProcess}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a59da0f41c0d483bbcabd52e33c1e5a6b} 
+void Multi\+Target\+Updaterv2\+::retry\+Win\+SCPProcess (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Gestisce il retry di connessione allo scadere del timer. Questa funzione viene chiamata quando il QTimer \textquotesingle{}retry\+Timer\textquotesingle{} scade, indicando che è il momento di tentare nuovamente il processo Win\+SCP. Incrementa il contatore dei tentativi e richiama la funzione in base al timer che scatta. 
+
+@slot retry\+Win\+SCPProcess 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione è responsabile della gestione deella riesecuzione dei alcuni processi Win\+SCP in caso di errore o timeot. \begin{DoxySeeAlso}{See also}
+enter\+Boot\+Loader(), down\+Load\+Net\+COnfig(), check\+Installedfs(), retry\+Count, MAX\+\_\+\+RETRIES, RETRY\+\_\+\+INTERVAL\+\_\+\+MS 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a5197c4367b18a877db8b0fd838d0c37a}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!updateAvailableSystemList@{updateAvailableSystemList}}
+\index{updateAvailableSystemList@{updateAvailableSystemList}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{updateAvailableSystemList()}{updateAvailableSystemList()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a5197c4367b18a877db8b0fd838d0c37a} 
+void Multi\+Target\+Updaterv2\+::update\+Available\+System\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiorna la lista dei progetti disponibili nella combo box. 
+
+@function update\+Available\+System\+List 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione pulisce la combo box e aggiunge i nomi dei progetti remoti disponibili. Se non ci sono progetti, la combo box rimane vuota. \begin{DoxySeeAlso}{See also}
+remote\+Projects, ui.\+cb\+\_\+projects\+List 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_af7532a10e3f27b1300897fa2ccac4800}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!updateFwTableWidget@{updateFwTableWidget}}
+\index{updateFwTableWidget@{updateFwTableWidget}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{updateFwTableWidget()}{updateFwTableWidget()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_af7532a10e3f27b1300897fa2ccac4800} 
+void Multi\+Target\+Updaterv2\+::update\+Fw\+Table\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Aggiorna la tabella dei firmware installati e disponibili. 
+
+@function update\+Fw\+Table\+Widget 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione pulisce la tabella esistente, imposta le intestazioni delle colonne e aggiunge le informazioni sui firmware installati e disponibili per ogni dispositivo \begin{DoxySeeAlso}{See also}
+\doxylink{struct_multi_target_updaterv2_1_1device_fw_info}{device\+Fw\+Info}, QTable\+Widget, QTable\+Widget\+Item 
+\end{DoxySeeAlso}
+\Hypertarget{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e}\index{MultiTargetUpdaterv2@{MultiTargetUpdaterv2}!writeScriptFile@{writeScriptFile}}
+\index{writeScriptFile@{writeScriptFile}!MultiTargetUpdaterv2@{MultiTargetUpdaterv2}}
+\doxysubsubsection{\texorpdfstring{writeScriptFile()}{writeScriptFile()}}
+{\footnotesize\ttfamily \label{class_multi_target_updaterv2_a27de1d9d7c645160370227baffc0749e} 
+bool Multi\+Target\+Updaterv2\+::write\+Script\+File (\begin{DoxyParamCaption}\item[{const QString \&}]{script}{, }\item[{const QString \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scrive uno script Win\+SCP in file specificato. 
+
+@function write\+Scrip\+File 
+\begin{DoxyParams}{Parameters}
+{\em script} & stringa contente il contenuto dello script da scrivere \\
+\hline
+{\em path} & stringa contenente il percorso del file in cui scrivere lo script. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se il file è stato scritto correttamente, false altrimenti.
+\end{DoxyReturn}
+Questa funzione apre un file in modalità scrittura e scrive il contenuto dello script in esso. \begin{DoxySeeAlso}{See also}
+QFile, QTest\+Strem 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+Assicurarsi che il percorso del file sia valido e che l\textquotesingle{}applicazione abbia i permessi di scrittura nella directory specificata. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/davided/source/repos/\+Multi\+Target\+Updaterv2/\+Multi\+Target\+Updaterv2/multitargetupdaterv2.\+h\item 
+C\+:/\+Users/davided/source/repos/\+Multi\+Target\+Updaterv2/\+Multi\+Target\+Updaterv2/multitargetupdaterv2.\+cpp\end{DoxyCompactItemize}

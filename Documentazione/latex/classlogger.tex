@@ -1,0 +1,104 @@
+\doxysection{logger Class Reference}
+\hypertarget{classlogger}{}\label{classlogger}\index{logger@{logger}}
+
+
+Classe per la gestione del logging degli eventi del programma.  
+
+
+
+
+{\ttfamily \#include $<$logger.\+h$>$}
+
+Inheritance diagram for logger\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlogger}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlogger_a82e7c3de3223c627d99bd566b2404e25}{log}} (const QString message)
+\begin{DoxyCompactList}\small\item\em log -\/ Scrive un messaggio di log nel file di log con un timestamp \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_a92b197bc07cb34194be8aae63c496f63}{exportlog}} (const QString destination\+Path)
+\begin{DoxyCompactList}\small\item\em Esporta il il file di testo di log in una directory specificata. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classlogger_ac34fb5327a64c9c805fc6ae76ce7e456}\label{classlogger_ac34fb5327a64c9c805fc6ae76ce7e456} 
+void {\bfseries print\+Log\+Message} (const QString \&message)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classlogger_abc478cb43bba24c9ede697d40b667144}\label{classlogger_abc478cb43bba24c9ede697d40b667144} 
+{\bfseries logger} (const QString log\+Dir\+Path)
+\item 
+\Hypertarget{classlogger_abb856642f4e62c7a4a11cc4a2d963010}\label{classlogger_abb856642f4e62c7a4a11cc4a2d963010} 
+void {\bfseries stop} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classlogger_a198255353e710aade5ad3e887aa208e6}\label{classlogger_a198255353e710aade5ad3e887aa208e6} 
+bool {\bfseries log\+File\+Created}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classlogger_a6d935a0d36b39292b39ba4c30deeea43}\label{classlogger_a6d935a0d36b39292b39ba4c30deeea43} 
+QFile \texorpdfstring{$\ast$}{*} {\bfseries log\+File}
+\item 
+\Hypertarget{classlogger_afca4452905d0bb0a06799aa1a3f71bfc}\label{classlogger_afca4452905d0bb0a06799aa1a3f71bfc} 
+QString {\bfseries log\+File\+Path}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe per la gestione del logging degli eventi del programma. 
+
+\label{doc-func-members}
+\Hypertarget{classlogger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classlogger_a92b197bc07cb34194be8aae63c496f63}\index{logger@{logger}!exportlog@{exportlog}}
+\index{exportlog@{exportlog}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{exportlog}{exportlog}}
+{\footnotesize\ttfamily \label{classlogger_a92b197bc07cb34194be8aae63c496f63} 
+void logger\+::exportlog (\begin{DoxyParamCaption}\item[{const QString}]{destination\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Esporta il il file di testo di log in una directory specificata. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination\+Path} & -\/ il percorso alla directory di destinazione di esportazione del file di log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione copia il file di log esistente nella directory di destinazione specificata. Se il file di log non esiste, emette un segnale di errore. Se la copia ha successo, emette un messaggio di successo.\texorpdfstring{$\ast$}{*} \Hypertarget{classlogger_a82e7c3de3223c627d99bd566b2404e25}\index{logger@{logger}!log@{log}}
+\index{log@{log}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{log}{log}}
+{\footnotesize\ttfamily \label{classlogger_a82e7c3de3223c627d99bd566b2404e25} 
+void logger\+::log (\begin{DoxyParamCaption}\item[{const QString}]{message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+log -\/ Scrive un messaggio di log nel file di log con un timestamp 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ il messaggio da scrivere nel file di log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Questa funzione apre il file di log in modalità append, scrive il messaggio con un timestamp e poi chiude il file. Se il file non può essere aperto, emette un segnale di errore. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/davided/source/repos/\+Multi\+Target\+Updaterv2/\+Multi\+Target\+Updaterv2/logger.\+h\item 
+C\+:/\+Users/davided/source/repos/\+Multi\+Target\+Updaterv2/\+Multi\+Target\+Updaterv2/logger.\+cpp\end{DoxyCompactItemize}
