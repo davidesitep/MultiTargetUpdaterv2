@@ -76,7 +76,7 @@ MultiTargetUpdaterv2::~MultiTargetUpdaterv2()
 	}
 
 	// Rimuovo tutti i file txt creati 
-	QDir txtDir(QCoreApplication::applicationDirPath());
+	QDir txtDir(exeAppPath);
 	if (txtDir.exists()) {
 		QStringList txtFiles = txtDir.entryList(QStringList() << "*.txt", QDir::Files);
 		for (const QString& fileName : txtFiles) {
@@ -133,13 +133,11 @@ void MultiTargetUpdaterv2::on_pushButtonClicked_enterBlMode()
 		ui.btn_enterBootloader->setChecked(true);
 
 		if (listWidgetAlive) ui.lw_logList->addItem("Entering bootloader mode...");
-		// qDebug() << "Modalità connessione abilitata.";
 	}
 	else {
 		enteringBl = false;
 		ui.btn_enterBootloader->setChecked(false);
 		if (listWidgetAlive) ui.lw_logList->addItem("Entering bootloader manualy stopped.");
-		// qDebug() << "Modalità connessione disabilitata.";
 	}
 }
 
@@ -217,6 +215,8 @@ void MultiTargetUpdaterv2::enterBootloader()
 					if (listWidgetAlive) ui.lw_logList->addItem("Entering bootloader mode manually disabled.");
 				}
 			}
+			QFile::remove(scriptFilePath);
+			QFile::remove(logFilePath);
 			enterBlProcess->deleteLater();
 		});
 
@@ -651,6 +651,8 @@ void MultiTargetUpdaterv2::checkInstalledfw() {
 					ui.btn_enterBootloader->setDisabled(false);
 				}
 			}
+			QFile::remove(scriptFilePath);
+			QFile::remove(logInfoFilePath);
 			checkInstalledFwProcess->deleteLater(); // Pulizia del processo
 		});
 
@@ -929,10 +931,7 @@ void MultiTargetUpdaterv2::updateFwTableWidget() {
 		browseButton->setFixedWidth(20); // Imposta una larghezza fissa per il pulsante
 		layout->addWidget(browseButton); // Aggiunge il pulsante al layout
 
-		//layout->addStretch(); // Aggiunge uno spazio flessibile tra la label e il pulsante
 		ui.tableWidget->setCellWidget(row, 2, updateFwWidget); // Imposta il widget composito nella cella
-
-		//ui.tableWidget->setItem(row, 2, new QTableWidgetItem(info.availableVersion + " " + info.availableData + " " + info.availableOra));
 
 		QPushButton* actionButton = new QPushButton("Update");
 		actionButton->setCheckable(true);
@@ -1172,6 +1171,8 @@ void MultiTargetUpdaterv2::downloadFwList() {
 			else {
 				if (listWidgetAlive) ui.lw_logList->addItem("General download error.");
 			}
+			QFile::remove(scriptFilePath);
+			QFile::remove(logFilePath);
 			downloadSystemListProcess->deleteLater(); // Pulizia del processo
 		});
 
@@ -1215,13 +1216,10 @@ void MultiTargetUpdaterv2::readConfList(QString confListDirPath) {
 					else if (tag == "UpdateUserPassword") tempProject.updatePassword = DecryptString(value);
 					else if (tag == "UpdateFtpPort") tempProject.port = value;
 					else if (tag == "NomeConfigurazione") tempProject.configurationName = (value);
-					//else if (tag == "PACK") pack = value;
 				}
 			}
-			// Esempio: stampa i dati letti
+			
 			remoteProjects.append(tempProject); // Aggiungi il progetto alla lista
-			//qDebug() << "ID:" << id << "Host:" << hostName << "User:" << userName << "Pwd:" << userPassword << "Nome conf:" << nomeConf;
-
 		}
 	}
 	if (xml.hasError()) {
@@ -1431,7 +1429,7 @@ void MultiTargetUpdaterv2::downloadRemoteFw() {
 	}
 	if (QFile::exists(localdataFolder + "NewData")) {
 		QStringList files = QDir(localdataFolder + "NewData/").entryList(QDir::Files | QDir::NoDotAndDotDot);
-		foreach(const QString & file, files) {
+		foreach(const QString& file, files) {
 			QFile::remove(localdataFolder + "NewData/" + file);
 		}
 		// Rimuove la cartella NewData se esiste, per evitare conflitti con i nuovi dati scaricati
@@ -1575,6 +1573,7 @@ void MultiTargetUpdaterv2::downloadRemoteFw() {
 			}
 
 			QFile::remove(scriptFilePath);
+			QFile::remove(logFilePath);
 			downloadProcess->deleteLater(); // Pulizia del processo
 		});
 
@@ -1624,8 +1623,8 @@ void MultiTargetUpdaterv2::unzipFolder(QString localTempFolder) {
 		return;
 	}
 
-	QString scriptPath = QCoreApplication::applicationDirPath() + "/unzip_script.bat";
-
+	QString scriptPath = QDir::toNativeSeparators(QCoreApplication::applicationDirPath() + "/unzip_script.bat");
+	ui.lw_logList->addItem("Script path: " + scriptPath);
 	QStringList arguments;
 	arguments << localTempFolder + "UpdateData.zip";
 	arguments << localTempFolder + "NewData";
@@ -1633,6 +1632,7 @@ void MultiTargetUpdaterv2::unzipFolder(QString localTempFolder) {
 	ui.lw_logList->addItem("Argomento 1: " + arguments.at(0));
 	ui.lw_logList->addItem("Argomento 2: " + arguments.at(1));
 	ui.lw_logList->addItem("Argomento 3: " + arguments.at(2));
+	
 	QProcess* unzipProcess = new QProcess(this);
 
 	/*
@@ -1643,8 +1643,6 @@ void MultiTargetUpdaterv2::unzipFolder(QString localTempFolder) {
 	*/
 	connect(unzipProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
 		this, [=](int exitCode, QProcess::ExitStatus exitStatus) {
-
-			ui.lw_logList->addItem("Porco dio: " + exitCode);
 
 			if (exitStatus == QProcess::NormalExit && exitCode == 0) {
 
@@ -1673,18 +1671,17 @@ void MultiTargetUpdaterv2::unzipFolder(QString localTempFolder) {
 				readLocalFwVersion(newDataFolder);
 			}
 			else {
-				if (listWidgetAlive) ui.lw_logList->addItem("Error during ZIP decompression: " + exitCode);
+				if (listWidgetAlive) ui.lw_logList->addItem("Error during ZIP decompression: " + QString::number(exitCode));
 			}
 			unzipProcess->deleteLater(); // Pulizia del processo
 		});
 	connect(unzipProcess, &QProcess::errorOccurred, this, &MultiTargetUpdaterv2::onWinSCPErrorOccurred);
-	//ui.lw_logList->addItem("Dio porco, Porco dio, porco, madonn aputtana schifosa!");
+	
 	unzipProcess->start(scriptPath, arguments);
 
 }
 
 /*
-*
  * @function readLocalFwVersion
  * @brief Legge le informazioni sui firmware installati e scaricati dalla cartella temporanea.
  * @param filesPath Il percorso della cartella contenente i file scaricati.
@@ -1757,7 +1754,6 @@ void MultiTargetUpdaterv2::readLocalFwVersion(const QString& filesPath) {
 			file.seek(offset + 64 + 16);
 			file.read(ora_buffer, 16);
 			file.close();
-
 
 			version_buffer[64] = '\0';
 			data_buffer[16] = '\0';
@@ -1832,7 +1828,6 @@ void MultiTargetUpdaterv2::on_pushButtonClicked_loadFromLocalFolder() {
  * Il processo di creazione dello script di caricamento dipende dal tipo di target (flash, nand, spifi, CAN, COM o altro).
  * @see writeScriptFile(), enableActionButton(), checkUpdate()
  */
-
 void MultiTargetUpdaterv2::updateFirmware(QString deviceName, QString updateFilePath) {
 
 
